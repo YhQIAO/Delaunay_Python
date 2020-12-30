@@ -6,7 +6,7 @@ import Functions
 from Triangle import Triangle
 
 
-num = 600
+num = 100
 
 randX = 100*np.random.rand(num)
 randY = 100*np.random.rand(num)
