@@ -29,24 +29,14 @@ def getIndexOfMinDisPointWithIgnoration(p,pointList,ignoreList):
 # 扩展k号三角形的方法
 def find_Point_index(n,PointList,triangle):
     index = -1
-    label = -1
-    a = 0
-    b = 0
-    p1 = triangle.p1
-    p2 = triangle.p2
-    p3 = triangle.p3
     if n == 1:
         p1 = triangle.p1
         p2 = triangle.p2
         p3 = triangle.p3
-
-
     if n == 2: # 1---3
         p1 = triangle.p1
         p2 = triangle.p3
         p3 = triangle.p2
-
-
     if n == 3: # 1---3
         p1 = triangle.p2
         p2 = triangle.p3
@@ -79,3 +69,25 @@ def find_Point_index(n,PointList,triangle):
                 index = i
 
     return index
+
+def isSame(p1,p2):
+    if p1.x == p2.x and p1.y == p2.y:
+        return True
+    else:
+        return False
+
+# 判断一个三角形的变是否已经出现了两次
+def isRepeat(p1,p2,triangleList):
+    Sum = 0
+    for tri in triangleList:
+        if (isSame(p1,tri.p1) and isSame(p2,tri.p2))\
+            or (isSame(p1,tri.p2) and isSame(p2,tri.p1))\
+            or (isSame(p1,tri.p1) and isSame(p2,tri.p3))\
+            or (isSame(p1,tri.p3) and isSame(p2,tri.p1))\
+            or (isSame(p1,tri.p2) and isSame(p2,tri.p3))\
+            or (isSame(p1,tri.p3) and isSame(p2,tri.p2)):
+            Sum = Sum+1
+    if Sum >=2:
+        return True
+    else:
+        return False
